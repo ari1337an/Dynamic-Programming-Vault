@@ -1,7 +1,6 @@
 int dp[(int)1e4+2][(int)1e4+2];
-
+//unordered_map<int,unordered_map<int,bool>> dp; // if segmentation fault, because of out of bound index
 void bottom_up_subset_sum(int arr[], int n, int range_sum){
-    memset(dp,-1,sizeof(dp));
     for (int i = 0; i <= n ; ++i) {
         for (int j = 0; j <= range_sum + 1; ++j) {
             if(i == 0) dp[i][j] = false;
