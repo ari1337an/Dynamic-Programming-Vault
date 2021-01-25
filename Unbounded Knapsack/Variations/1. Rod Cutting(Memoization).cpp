@@ -13,7 +13,6 @@ int solve(vector<int> &length, vector<int> &price, int n, int len){
     }
 }
 
-
 int main() {
 	int testcase;
 	cin >> testcase;
