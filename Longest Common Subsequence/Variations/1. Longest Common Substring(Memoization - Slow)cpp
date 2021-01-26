@@ -1,0 +1,7 @@
+    unordered_map<int, unordered_map<int, unordered_map<int, int>>> dp;
+    int solve(string x, string y, int n, int m, int lcsubstring){
+        if(n == 0 || m == 0) return 0;
+        if(dp[n][m][lcsubstring]) return dp[n][m][lcsubstring];
+        if(x[n-1] == y[m-1]) return dp[n][m][lcsubstring] = solve(x,y,n-1,m-1,lcsubstring+1);
+        else return dp[n][m][lcsubstring] = max(lcsubstring, max(solve(x,y,n-1,m,0),solve(x,y,n,m-1,0)));
+    }
