@@ -12,7 +12,7 @@ int LCS(string x, string y, int n, int m){
   }
   return dp[n][m];
 }
-pair<int, int> solve(string A, string B, int n, int m){
+pair<int, int> solve(string A, string B, int n, int m){ // first = deletion, second = insertion
     int lcs = LCS(A,B,n,m);
     pair<int, int> deletion_insertion = {n-lcs, m-lcs};
     return deletion_insertion;
