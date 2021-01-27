@@ -1,6 +1,7 @@
 int dp[1001][1001];
 
 string SCS_print(string x, string y, int n, int m){
+    // Populate the LCS dp array
     for(int i = 0; i <= n; i++){
         for(int j = 0; j <= m; j++){
             if(i == 0 || j == 0) dp[i][j] = 0;
@@ -11,6 +12,8 @@ string SCS_print(string x, string y, int n, int m){
             }
         }
     }
+    
+    // Partly same as LCS printing
     string scs;
     int i = n, j = m;
     while(i > 0 && j > 0){
@@ -20,16 +23,17 @@ string SCS_print(string x, string y, int n, int m){
             j--;
         }else{
             if(dp[i-1][j] > dp[i][j-1]) {
-                scs = x[i-1] + scs;
+                scs = x[i-1] + scs; // extra
                 i--;
             }else{
-                scs = y[j-1] + scs;
+                scs = y[j-1] + scs; // extra
                 j--;
             }
         }
     }
 
-    // because if x = "ae" and y = "" then scs = "ae" hence
+    // because if x = "ae" and y = "" then lcs = "" but scs = "ae" hence we need to add them also.
+    // 
     while(i > 0){
         scs = x[i-1] + scs;
         i--;
